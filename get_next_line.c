@@ -6,7 +6,7 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 10:11:24 by phautena          #+#    #+#             */
-/*   Updated: 2024/06/20 14:01:21 by phautena         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:39:59 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	line = get_line_fd(fd, line);
-	if (ft_strlen(line) == 0)
+	if (gnl_strlen(line) == 0)
 	{
 		free(line);
 		line = NULL;
@@ -56,7 +56,7 @@ char	*read_until_n(int fd, char *line, char *buffer, int bytes_red)
 {
 	char	*temp;
 
-	while (ft_strchr(buffer, '\n') == NULL)
+	while (gnl_strchr(buffer, '\n') == NULL)
 	{
 		bytes_red = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_red == 0)
@@ -66,10 +66,10 @@ char	*read_until_n(int fd, char *line, char *buffer, int bytes_red)
 		}
 		buffer[bytes_red] = '\0';
 		if (line == NULL)
-			line = ft_strdup("");
+			line = gnl_strdup("");
 		temp = line;
 		if (temp != NULL && buffer != NULL)
-			line = ft_strjoin(temp, buffer);
+			line = gnl_strjoin(temp, buffer);
 		free(temp);
 	}
 	free(buffer);
@@ -86,7 +86,7 @@ char	*clean_line(char *line)
 	{
 		while (line[i] != '\n' && line[i] != '\0')
 			i++;
-		cleaned_line = ft_substr(line, 0, i + 1);
+		cleaned_line = gnl_substr(line, 0, i + 1);
 		return (cleaned_line);
 	}
 	else
@@ -103,7 +103,7 @@ char	*get_remainder(char *line)
 	{
 		while (line[i] != '\n' && line[i] != '\0')
 			i++;
-		remainder_line = ft_substr(line, i + 1, ft_strlen(line));
+		remainder_line = gnl_substr(line, i + 1, gnl_strlen(line));
 		free(line);
 		line = NULL;
 		return (remainder_line);

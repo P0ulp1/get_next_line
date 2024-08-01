@@ -6,13 +6,13 @@
 /*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 10:11:44 by phautena          #+#    #+#             */
-/*   Updated: 2024/06/21 11:37:23 by phautena         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:39:45 by phautena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*gnl_strchr(const char *s, int c)
 {
 	int	i;
 
@@ -28,17 +28,17 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*gnl_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	i;
 	size_t	len_s;
 
-	len_s = ft_strlen(s);
+	len_s = gnl_strlen(s);
 	if (s == NULL)
 		return (NULL);
 	if (start >= len_s)
-		return (ft_strdup(""));
+		return (gnl_strdup(""));
 	if (len > len_s - start)
 		len = len_s - start;
 	sub = malloc(sizeof(char) * (len + 1));
@@ -54,7 +54,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	size_t	i;
 
@@ -68,15 +68,15 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*gnl_strjoin(char const *s1, char const *s2)
 {
 	char	*string;
 	size_t	i;
 	size_t	len_s1;
 	size_t	len_s2;
 
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
+	len_s1 = gnl_strlen(s1);
+	len_s2 = gnl_strlen(s2);
 	string = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (string == NULL)
 		return (NULL);
@@ -96,13 +96,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (string);
 }
 
-char	*ft_strdup(const char *s)
+char	*gnl_strdup(const char *s)
 {
 	char			*string;
 	unsigned int	i;
 
 	i = 0;
-	string = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	string = malloc(sizeof(char) * (gnl_strlen(s) + 1));
 	if (string == NULL)
 		return (NULL);
 	while (s[i] != '\0')
